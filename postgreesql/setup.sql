@@ -1,21 +1,25 @@
-CREATE TABLE jogadas(
-    idJogada serial4 PRIMARY KEY NOT NULL,
-    idJogo INT NOT NULL,
-    idJogador INT NOT NULL,
-    nomeJogador varchar(50) NOT NULL,
-    acerto BOOLEAN NOT NULL,
-    FOREIGN KEY (idPergunta) REFERENCES perguntas(idPergunta)
-);
 
 CREATE TABLE perguntas(
-    idPeregunta INT PRIMARY KEY NOT NULL,
+    idPergunta INT PRIMARY KEY NOT NULL,
     tipo VARCHAR(50) NOT NULL,
     categoria VARCHAR(50) NOT NULL,
     dificuldade VARCHAR(20) NOT NULL,
-    pergunta VARCHAR (500) NOT NULL,
+    pergunta VARCHAR(500) NOT NULL,
     respostaCorreta VARCHAR(100) NOT NULL,
     respostasIncorretas VARCHAR(100) NOT NULL
 );
+
+
+CREATE TABLE jogadas(
+    idJogada SERIAL PRIMARY KEY NOT NULL,
+    idJogo INT NOT NULL,
+    idJogador INT NOT NULL,
+    nomeJogador VARCHAR(50) NOT NULL,
+    acerto BOOLEAN NOT NULL,
+    idPergunta INT NOT NULL,
+    FOREIGN KEY (idPergunta) REFERENCES perguntas(idPergunta)
+);
+
 
 /*
 *Jogadas*
