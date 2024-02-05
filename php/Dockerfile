@@ -1,4 +1,6 @@
+# docker build -t perguntas .
 # docker run -dp 8080:80 -v /home/imply/Documentos/GitHub/Desafio3Trivia-main/php:/var/www/html --name perguntas php
+# docker run -dp 8080:80 -v C:\Users\balcz\Documents\GitHub\Desafio3Trivia-main\php:/var/www/html --name perguntas php
 
 FROM php:8.3.2-apache
 
