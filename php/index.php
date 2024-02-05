@@ -1,5 +1,5 @@
 <?php
-//testando
+
 $URI = "?amount=1";
 
 # Inicializa o cURL
