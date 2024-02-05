@@ -1,7 +1,8 @@
-FROM php:7.4-apache
+# docker run -dp 8080:80 -v /home/imply/Documentos/GitHub/Desafio3Trivia-main/php:/var/www/html --name perguntas php
+
+FROM php:8.3.2-apache
 
 WORKDIR /var/www/html
-COPY . /var/www/html
 
 RUN apt-get update
 

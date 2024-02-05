@@ -1,16 +1,20 @@
-CREATE TABLE jogos(
-    id serial1 NOT NULL,
-    perguntas VARCHAR(500) NOT NULL,
-    resposta_correta VARCHAR(200) NOT NULL,
-    respostas_incorretas VARCHAR(200) NOT NULL
+CREATE TABLE jogadas(
+    idJogada serial4 PRIMARY KEY NOT NULL,
+    idJogo INT NOT NULL,
+    idJogador INT NOT NULL,
+    nomeJogador varchar(50) NOT NULL,
+    acerto BOOLEAN NOT NULL,
+    FOREIGN KEY (idPergunta) REFERENCES perguntas(idPergunta)
 );
 
-CREATE TABLE jogadas(
-    id serial1 NOT NULL,
+CREATE TABLE perguntas(
+    idPeregunta INT PRIMARY KEY NOT NULL,
+    tipo VARCHAR(50) NOT NULL,
     categoria VARCHAR(50) NOT NULL,
-    tipo VARCHAR(20) NOT NULL,
-    dificuldade VARCHAR(8) NOT NULL,
-    tentativas INT NOT NULL
+    dificuldade VARCHAR(20) NOT NULL,
+    pergunta VARCHAR (500) NOT NULL,
+    respostaCorreta VARCHAR(100) NOT NULL,
+    respostasIncorretas VARCHAR(100) NOT NULL
 );
 
 /*
@@ -28,4 +32,69 @@ Pergunta (varchar)
 Resposta correta
 Respostas incorretas
 Resposta do jogador
+
+Tipo de resposta esperada:
+{
+    "response_code": 0,
+    "results": [
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "Entertainment: Video Games",
+            "question": "How many games are there in the &quot;Colony Wars&quot; series for the PlayStation?",
+            "correct_answer": "3",
+            "incorrect_answers": [
+                "2",
+                "4",
+                "5"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "Entertainment: Comics",
+            "question": "What is the name of the main character in the webcomic Gunnerkrigg Court by Tom Siddell?",
+            "correct_answer": "Antimony",
+            "incorrect_answers": [
+                "Bismuth",
+                "Mercury",
+                "Cobalt"
+            ]
+        },
+        {
+            "type": "boolean",
+            "difficulty": "easy",
+            "category": "Science: Computers",
+            "question": "The logo for Snapchat is a Bell.",
+            "correct_answer": "False",
+            "incorrect_answers": [
+                "True"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "Entertainment: Music",
+            "question": "From which album is the Gorillaz song, &quot;On Melancholy Hill&quot; featured in?",
+            "correct_answer": "Plastic Beach",
+            "incorrect_answers": [
+                "Demon Days",
+                "Humanz",
+                "The Fall"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "hard",
+            "category": "Entertainment: Video Games",
+            "question": "In Disney&#039;s &quot;Toontown Online&quot;, which of these species wasn&#039;t available as a Toon?",
+            "correct_answer": "Cow",
+            "incorrect_answers": [
+                "Monkey",
+                "Bear",
+                "Pig"
+            ]
+        }
+    ]
+}
 */
