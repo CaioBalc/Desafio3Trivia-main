@@ -19,7 +19,7 @@ $triviaAPIParaBanco->fetchAndSaveQuestion();
 
 
 // Utiliza false para pergunta aleatória ou true para a última pergunta
-$PerguntaEscolhida = new PedeParaBanco(true); // Passando false para exemplo de pergunta aleatória se tiver offline
+$PerguntaEscolhida = new PedeParaBanco(false); // Passando false para exemplo de pergunta aleatória se tiver offline
 $pergunta = $PerguntaEscolhida->pegaPergunta();
 
 /*echo "Pergunta: " . $buscaPergunta->pegaPergunta() . "\n";
