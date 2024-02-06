@@ -1,26 +1,23 @@
 <?php
-//pega uma pergunta da api e salva no banco de dados
+
+//funcionando com pdo ok eu acho 
+//pega uma pergunta da api e salva no banco de dados 
+
+require_once 'Conexao.php'; // Garanta que este caminho esteja correto
 
 class TriviaAPIParaBanco {
     private $dbConnection;
     private $Token;
 
-    public function __construct($dsn, $user, $password, $sessionToken) {
+    public function __construct($sessionToken) {
         $this->Token = $sessionToken;
-        try {
-            $this->dbConnection = new PDO($dsn, $user, $password, [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-            ]);
-            echo "Conexão com o banco de dados estabelecida.\n";
-        } catch (PDOException $e) {
-            exit('Erro ao conectar com o banco de dados: ' . $e->getMessage());
-        }
+        $this->dbConnection = Conexao::conectar(); // Utiliza a conexão única fornecida pela classe Conexao
     }
 
     public function fetchAndSaveQuestion() {
         $uri = "?amount=1";
         $ch = curl_init();
-        //dar print no Token e checar se esta no formato certo para requisição
+        //dar print no Token e checar se está no formato certo para requisição
         curl_setopt($ch, CURLOPT_URL, "https://opentdb.com/api.php" . $uri . "&token=" . $this->Token);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);

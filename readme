@@ -3,7 +3,7 @@
 //remover dados
 
 //cd C:\Users\Master\Desktop\imply\desafios\desafios03\desafio1\Desafio3Trivia-main
-//cd /home/imply/Área de Trabalho/desafios/desafios03/desafio1/Desafio3Trivia-main
+//cd /home/imply/Área\ de\ Trabalho/desafios/desafios03/desafio1/Desafio3Trivia-main
 //docker-compose up -d
 //docker context use default
 
