@@ -2,16 +2,20 @@
 
 # require "index.php";
 
-$alternativas = array(
-    "respostaCorreta" => "Alternativa 1",
-    "respostaIncorreta1" => "Alternativa 2",
-    "respostaIncorreta2" => "Alternativa 3",
-    "respostaIncorreta3" => "Alternativa 4"
-);
+$pergunta = "Pergunta";
 
-$perguntas = array(
-    "Pergunta1"=> "Que pergunta?",
+$respostaCorreta = "Resposta correta";
+$respostaIncorreta1 = "Errado";
+$respostaIncorreta2 = "Errado";
+$respostaIncorreta3 = "Errado";
+
+$alternativas = array(
+    $respostaCorreta,
+    $respostaIncorreta1,
+    $respostaIncorreta2,
+    $respostaIncorreta3
 );
+shuffle($alternativas);
 
 ?>
 
@@ -35,15 +39,14 @@ $perguntas = array(
         <h2 class="centralizar"><b>Dificuldade: </b></h2>
         <h2 class="grid"><b>Pergunta: </b></h2>
         <?php
-            foreach ($perguntas as $chave => $valor){
-            echo "<button class='button' id='$chave'>$valor</button>" ;
-            }
+            echo "<p class='pergunta' id='pergunta'>$pergunta</p>";
         ?>
         <h2 class="grid"><b>Alternativas: </b></h2>
         <?php
             #$alternativas = ["String", "Talvez não"];
             foreach ($alternativas as $chave => $valor){
-            echo "<button class='button' id='$chave'>$valor</button>" ;
+            echo "<button class='button' id='$chave'>$valor</button>";
+            # print_r($valor);
             }
         ?>
 
@@ -56,7 +59,7 @@ $perguntas = array(
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: `resposta=${id}`,
+                    body: `resposta=${encodeURIComponent(id)}`,
                 })
                 .then(response => response.text())
                 .then(data => {
