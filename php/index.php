@@ -6,7 +6,7 @@ require_once 'PedeParaBanco.php';
 require_once 'GeradorToken.php';
 
 //prontas
-//triviaAPIParaBanco adaptar para retornar true ou false para a pede banco
+//triviaAPIParaBanco --falta adaptar para retornar true ou false para a pede banco
 //GeradorToken
 //PedeParaBanco
 
@@ -19,7 +19,8 @@ $triviaAPIParaBanco->fetchAndSaveQuestion();
 
 
 // Utiliza false para pergunta aleatória ou true para a última pergunta
-$buscaPergunta = new PedeParaBanco(false); // Passando false para exemplo de pergunta aleatória
+$PerguntaEscolhida = new PedeParaBanco(true); // Passando false para exemplo de pergunta aleatória se tiver offline
+$pergunta = $PerguntaEscolhida->pegaPergunta();
 
 /*echo "Pergunta: " . $buscaPergunta->pegaPergunta() . "\n";
 echo "Dificuldade: " . $buscaPergunta->pegaDificuldade() . "\n";
