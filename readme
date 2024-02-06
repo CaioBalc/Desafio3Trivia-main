@@ -6,3 +6,8 @@
 //cd /home/imply/Área de Trabalho/desafios/desafios03/desafio1/Desafio3Trivia-main
 //docker-compose up -d
 //docker context use default
+
+# Caio #
+cd /home/imply/Documentos/GitHub/Desafio3Trivia-main
+docker-compose
+docker-compose up -d
