@@ -3,7 +3,9 @@
 //funcionando com pdo ok eu acho 
 //pega uma pergunta da api e salva no banco de dados 
 
-require_once 'Conexao.php'; // Garanta que este caminho esteja correto
+//falta: se codigo de erro5 esperar 5 segundos e tentar de novo
+
+require_once 'Conexao.php'; 
 
 class TriviaAPIParaBanco {
     private $dbConnection;
@@ -14,14 +16,16 @@ class TriviaAPIParaBanco {
         $this->dbConnection = Conexao::conectar(); // Utiliza a conexão única fornecida pela classe Conexao
     }
 
-    public function fetchAndSaveQuestion() {
+    public function fetchAndSaveQuestion() 
+    {
         $uri = "?amount=1";
         $ch = curl_init();
-        //dar print no Token e checar se está no formato certo para requisição
+       
         curl_setopt($ch, CURLOPT_URL, "https://opentdb.com/api.php" . $uri . "&token=" . $this->Token);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
-        if (curl_errno($ch)) {
+        if (curl_errno($ch)) 
+        {
             curl_close($ch);
             exit('Erro ao buscar dados da API: ' . curl_error($ch));
         }
@@ -32,12 +36,16 @@ class TriviaAPIParaBanco {
         echo "Resposta da API: \n";
         print_r($data);
 
-        if ($data && $data['response_code'] == 0) {
+        if ($data && $data['response_code'] == 0) 
+        {
             foreach ($data['results'] as $result) {
                 $this->saveQuestion($result);
             }
         } else {
-            exit('Resposta da API inválida ou sem dados.');
+            exit('Resposta da API inválida ou sem dados.');///---------------------- espera e tenta de novo pq api s'o deixa uma a cada 5 seg
+            sleep(5);
+            $this->fetchAndSaveQuestion();
+
         }
     }
 

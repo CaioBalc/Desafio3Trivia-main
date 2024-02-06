@@ -15,7 +15,7 @@ class PedeParaBanco {
 
     private function selecionaPergunta() {
         if ($this->usarUltimaPergunta) {
-            $sql = "SELECT * FROM perguntas ORDER BY id DESC LIMIT 1";
+            $sql = "SELECT * FROM perguntas ORDER BY idpergunta DESC LIMIT 1";
         } else {
             $sql = "SELECT * FROM perguntas ORDER BY RANDOM() LIMIT 1";
         }

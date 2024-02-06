@@ -22,6 +22,10 @@ $triviaAPIParaBanco->fetchAndSaveQuestion();
 $PerguntaEscolhida = new PedeParaBanco(false); // Passando false para exemplo de pergunta aleatória se tiver offline
 $pergunta = $PerguntaEscolhida->pegaPergunta();
 
+print_r($pergunta);
+
+echo"\n\n";
+
 /*echo "Pergunta: " . $buscaPergunta->pegaPergunta() . "\n";
 echo "Dificuldade: " . $buscaPergunta->pegaDificuldade() . "\n";
 echo "Resposta Correta: " . $buscaPergunta->pegaRespostaCorreta() . "\n";
