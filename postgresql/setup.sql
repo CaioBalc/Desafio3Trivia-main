@@ -1,6 +1,6 @@
 
 CREATE TABLE perguntas(
-    idPergunta INT PRIMARY KEY NOT NULL,
+    idPergunta  SERIAL PRIMARY KEY NOT NULL,
     tipo VARCHAR(50) NOT NULL,
     categoria VARCHAR(50) NOT NULL,
     dificuldade VARCHAR(20) NOT NULL,
