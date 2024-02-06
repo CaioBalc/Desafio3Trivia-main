@@ -1,6 +1,8 @@
 <?php
 
-require_once 'TriviaAPIParaBanco.php';
+require_once 'triviaAPIParaBanco.php';
+require_once 'GeradorToken.php';
+
 
 $dsn = 'pgsql:host=db;dbname=dadosjogos'; 
 $user = 'usuario'; 
