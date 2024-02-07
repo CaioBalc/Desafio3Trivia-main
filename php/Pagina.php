@@ -12,6 +12,15 @@ array_push($alternativas, $respostaCorreta);
 
 shuffle($alternativas);
 
+// Ver as respostas incorretas
+/*
+foreach($respostasIncorretas as $respostas){
+    echo "<br>";
+    echo $respostas;
+    echo "<br>";
+}
+*/
+
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +57,7 @@ shuffle($alternativas);
         <script>
             document.querySelectorAll('.button').forEach(button => {
                 button.addEventListener('click', event => {
-                    fetch('resposta.php', {
+                    fetch('Resposta.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
