@@ -2,6 +2,7 @@
 session_start();
 if (isset($_POST['Resposta'])) {
     $resposta = $_POST['Resposta'];
+    
 
     // Verifica se a resposta enviada é a resposta correta
     if ($resposta == $_SESSION['RespostaCorreta']) {
@@ -11,6 +12,7 @@ if (isset($_POST['Resposta'])) {
         $_SESSION['Pontuacao']--; // Diminui a pontuação
         echo 'Errado!';
     }
+    $_SESSION['TentativasJogadas']++;
 
     /*
     echo 'Tipo de $resposta: ' . gettype($resposta) . "\n";
