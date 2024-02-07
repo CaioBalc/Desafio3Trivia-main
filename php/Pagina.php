@@ -45,18 +45,12 @@ echo $respostaCorreta;
     </Header>
 
     <section>
-        <h2 class="centralizar"><b>Pontuação: </b></h2>
-        <?php
-            echo "<p class='informacoes' id='Pontuacao'>$pontuacao</p>";
-        ?>
-        <h2 class="centralizar"><b>Tipo: </b></h2>
-        <?php
-            echo "<p class='informacoes' id='Tipo'>$tipo</p>";
-        ?>
-        <h2 class="centralizar"><b>Dificuldade: </b></h2>
-        <?php
-            echo "<p class='informacoes' id='Dificuldade'>$dificuldade</p>";
-        ?>
+        <h2 class="centralizar"><b>Pontuação: <?php echo $pontuacao; ?></b></h2>
+
+        <h2 class="centralizar"><b>Tipo: <?php echo $tipo; ?></b></h2>
+
+        <h2 class="centralizar"><b>Dificuldade: <?php echo $dificuldade; ?></b></h2>
+        
         <h2 class="centralizar"><b>Pergunta: </b></h2>
         <?php
             echo "<p class='pergunta' id='Pergunta'>$pergunta</p>";
