@@ -46,4 +46,25 @@ echo "Tipo: " . $buscaPergunta->pegaTipo() . "\n";*/
 
 require_once 'Pagina.php';// primeiro testar as classes depois debug, depois add ------
 
+/*
+// Se o botão de "Jogar Novamente" foi pressionado, resetar as variáveis de sessão
+if (isset($_POST['jogar_novamente'])) {
+    unset($_SESSION['nome_usuario']);
+    unset($_SESSION['jogos_completados']);
+}
+
+// Checa se o usuário já inseriu o nome
+if (!isset($_SESSION['nome_usuario'])) {
+    require_once 'pagina_nome.php';
+    exit;
+} elseif (!isset($_SESSION['jogos_completados']) || $_SESSION['jogos_completados'] < 5) {
+    // Se o nome está definido, mas o usuário ainda não completou 5 jogos
+    require_once 'pagina_jogo.php';
+    exit;
+} else {
+    // Se o usuário já completou 5 jogos
+    require_once 'pagina_obrigado.php';
+    exit;
+*/
+
 ?>
