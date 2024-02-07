@@ -5,14 +5,13 @@
 session_start();
 
 
-$pergunta = "Pergunta";
+$pergunta = $PerguntaEscolhida->pegaPergunta();
 
-$respostaCorreta = "Resposta correta";
+$respostaCorreta = $PerguntaEscolhida->pegaRespostaCorreta();
 $_SESSION['respostaCorreta'] = $respostaCorreta;
 
-$respostaIncorreta1 = "Errado";
-$respostaIncorreta2 = "Errado";
-$respostaIncorreta3 = "Errado";
+$respostasIncorretas = pegaRespostasErradas();
+
 
 $alternativas = array(
     $respostaCorreta,
