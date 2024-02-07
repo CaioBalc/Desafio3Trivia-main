@@ -1,11 +1,14 @@
 <?php
 
 
-
+if (!isset($_SESSION['Pontuacao'])) {
+    $_SESSION['Pontuacao'] = 0;
+}
+$pontuacao = $_SESSION['Pontuacao'];
+$tipo = $_SESSION['Tipo'];
+$dificuldade = $_SESSION['Dificuldade'];
 $pergunta = $_SESSION['Pergunta'];
 $respostaCorreta = $_SESSION['RespostaCorreta'];
-$dificuldade = $_SESSION['Dificuldade'];
-$tipo = $_SESSION['Tipo'];
 $alternativas = $respostasIncorretas = $_SESSION['RespostasIncorretas'];
 
 array_push($alternativas, $respostaCorreta);
@@ -20,6 +23,9 @@ foreach($respostasIncorretas as $respostas){
     echo "<br>";
 }
 */
+echo "<br>";
+echo $respostaCorreta;
+
 
 ?>
 
@@ -31,7 +37,7 @@ foreach($respostasIncorretas as $respostas){
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <title>Desafio Trivia</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Style.css">
 </head>
 <body>
     <Header>
@@ -39,13 +45,23 @@ foreach($respostasIncorretas as $respostas){
     </Header>
 
     <section>
-        <h2 class="centralizar"><b>Tipo: </b></h2>
-        <h2 class="centralizar"><b>Dificuldade: </b></h2>
-        <h2 class="grid"><b>Pergunta: </b></h2>
+        <h2 class="centralizar"><b>Pontuação: </b></h2>
         <?php
-            echo "<p class='pergunta' id='pergunta'>$pergunta</p>";
+            echo "<p class='informacoes' id='Pontuacao'>$pontuacao</p>";
         ?>
-        <h2 class="grid"><b>Alternativas: </b></h2>
+        <h2 class="centralizar"><b>Tipo: </b></h2>
+        <?php
+            echo "<p class='informacoes' id='Tipo'>$tipo</p>";
+        ?>
+        <h2 class="centralizar"><b>Dificuldade: </b></h2>
+        <?php
+            echo "<p class='informacoes' id='Dificuldade'>$dificuldade</p>";
+        ?>
+        <h2 class="centralizar"><b>Pergunta: </b></h2>
+        <?php
+            echo "<p class='pergunta' id='Pergunta'>$pergunta</p>";
+        ?>
+        <h2 class="centralizar"><b>Alternativas: </b></h2>
         <?php
             #$alternativas = ["String", "Talvez não"];
             foreach ($alternativas as $chave => $valor){
@@ -62,7 +78,7 @@ foreach($respostasIncorretas as $respostas){
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                         },
-                        body: `resposta=${encodeURIComponent(event.target.textContent)}`,
+                        body: `Resposta=${encodeURIComponent(event.target.textContent)}`,
                     })
                     .then(response => response.text())
                     .then(data => {
