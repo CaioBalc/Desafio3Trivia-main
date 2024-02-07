@@ -19,7 +19,7 @@ class GeradorToken {
         } else {
             // Retorna um código de erro específico ou genérico se a resposta não for bem-sucedida
             $errorCode = isset($data['response_code']) ? $data['response_code'] : 'Erro desconhecido';
-            echo "Código de erro: $errorCode\n";
+            //echo "Código de erro: $errorCode\n";
             return null;
         }
     }

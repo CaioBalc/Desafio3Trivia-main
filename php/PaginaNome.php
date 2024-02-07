@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 // Verifica se o formulário foi submetido
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome_usuario']) && !empty(trim($_POST['nome_usuario']))) {

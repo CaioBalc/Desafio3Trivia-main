@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 if (!isset($_SESSION['TentativasJogadas'])) {
     $_SESSION['TentativasJogadas'] = 0;
@@ -18,17 +18,6 @@ $alternativas = $respostasIncorretas = $_SESSION['RespostasIncorretas'];
 array_push($alternativas, $respostaCorreta);
 
 shuffle($alternativas);
-
-// Ver as respostas incorretas
-/*
-foreach($respostasIncorretas as $respostas){
-    echo "<br>";
-    echo $respostas;
-    echo "<br>";
-}
-*/
-echo "<br>";
-echo $respostaCorreta;
 
 
 ?>

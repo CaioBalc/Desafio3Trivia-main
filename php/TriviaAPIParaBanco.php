@@ -10,6 +10,7 @@ require_once 'Conexao.php';
 class TriviaAPIParaBanco {
     private $dbConnection;
     private $Token;
+    private $debug = false;
 
     public function __construct($sessionToken) {
         $this->Token = $sessionToken;
@@ -40,8 +41,11 @@ class TriviaAPIParaBanco {
             $data = json_decode($response, true);
 
             // Imprimindo a resposta da API no terminal
-            echo "Resposta da API: \n";
-            print_r($data);
+            if($this->debug == true)
+            {
+                echo "Resposta da API: \n";
+                print_r($data);
+            }
 
             if ($data && $data['response_code'] == 0) 
             {
@@ -52,13 +56,19 @@ class TriviaAPIParaBanco {
             } else {
 
                 $codigo = $data['response_code'];
-                echo "Resposta da API inválida (Código de Resposta: {$codigo}). Tentando novamente em 5 segundos...\n";
+                if($this->debug == true)
+                {
+                    echo "Resposta da API inválida (Código de Resposta: {$codigo}). Tentando novamente em 5 segundos...\n";
+                }
                 sleep(5);
 
             }
         } while ($tentativas < 3);
-
-        echo "\nExcedeu o limite de tentativas. Mudando para modo offline.\n";
+        if($this->debug == true)
+        {
+            echo "Excedeu o limite de tentativas. Mudando para modo offline.\n";
+        }
+       
         return false;// falha 2 ------------
     }
 
@@ -75,7 +85,10 @@ class TriviaAPIParaBanco {
                 $questionData['correct_answer'],
                 $incorrectAnswers
             ]);
-            echo "Pergunta salva com sucesso.\n";
+            if($this->debug == true)
+            {
+                echo "Pergunta salva com sucesso.\n";
+            }
         } catch (PDOException $e) {
             exit('Erro ao salvar pergunta no banco de dados: ' . $e->getMessage());
         }

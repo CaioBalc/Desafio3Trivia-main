@@ -32,40 +32,30 @@ $_SESSION['RespostasIncorretas'] = $PerguntaEscolhida->pegaRespostasErradas();
 $_SESSION['Tipo'] = $PerguntaEscolhida->pegaTipo();
 $_SESSION['Dificuldade'] = $PerguntaEscolhida->pegaDificuldade();
 
-print_r($pergunta);
+//print_r($pergunta);
 
-echo"\n\n";
-
-/*echo "Pergunta: " . $buscaPergunta->pegaPergunta() . "\n";
-echo "Dificuldade: " . $buscaPergunta->pegaDificuldade() . "\n";
-echo "Resposta Correta: " . $buscaPergunta->pegaRespostaCorreta() . "\n";
-echo "Respostas Erradas: " . implode(", ", $buscaPergunta->pegaRespostasErradas()) . "\n"; // Use implode para juntar as respostas erradas, se elas forem um array
-echo "Tipo: " . $buscaPergunta->pegaTipo() . "\n";*/
+//echo"\n\n";
 
 // pesquisar htmlspecialchars()
 
 require_once 'PaginaJogo.php';// primeiro testar as classes depois debug, depois add ------
 
-/*
+
 // Se o botão de "Jogar Novamente" foi pressionado, resetar as variáveis de sessão
-if (isset($_POST['jogar_novamente'])) {
-    unset($_SESSION['nome_usuario']);
-    unset($_SESSION['jogos_completados']);
+// Verifica se o usuário já inseriu o nome.
+if (!isset($_SESSION['nome_usuario'])) {
+    header('Location: PaginaNome.php');
+    exit;
 }
 
-// Checa se o usuário já inseriu o nome
-if (!isset($_SESSION['nome_usuario'])) {
-    require_once 'PaginaNome.php';
+// Verifica se o usuário completou o jogo.
+if (isset($_SESSION['jogos_completados']) && $_SESSION['jogos_completados'] >= 5) {
+    header('Location: paginaObrigado.php');
     exit;
-} elseif (!isset($_SESSION['jogos_completados']) || $_SESSION['jogos_completados'] < 5) {
-    // Se o nome está definido, mas o usuário ainda não completou 5 jogos
-    require_once 'PaginaJogo.php';
-    //salvar jogada com o nome no banco de dados -------------------------------------------------
-    exit;
-} else {
-    // Se o usuário já completou 5 jogos apagar nome da variavel
-    require_once 'PaginaObrigado.php';
-    exit;
-*/
+}
+
+// Se o usuário já tem um nome, mas não completou 5 jogos, mostra a página do jogo.
+header('Location: paginaJogo.php');
+exit;
 
 ?>
