@@ -60,9 +60,10 @@ if (!isset($_SESSION['nome_usuario'])) {
 } elseif (!isset($_SESSION['jogos_completados']) || $_SESSION['jogos_completados'] < 5) {
     // Se o nome está definido, mas o usuário ainda não completou 5 jogos
     require_once 'PaginaJogo.php';
+    //salvar jogada com o nome
     exit;
 } else {
-    // Se o usuário já completou 5 jogos
+    // Se o usuário já completou 5 jogos apagar nome da variavel
     require_once 'PaginaObrigado.php';
     exit;
 */
