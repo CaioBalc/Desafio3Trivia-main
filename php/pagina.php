@@ -12,7 +12,7 @@ $_SESSION['respostaCorreta'] = $respostaCorreta;
 
 $alternativas = $respostasIncorretas = $PerguntaEscolhida->pegaRespostasErradas();
 
-array_push($alternativas, $respostaCorreata);
+array_push($alternativas, $respostaCorreta);
 
 shuffle($alternativas);
 
