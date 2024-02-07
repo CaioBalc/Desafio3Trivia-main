@@ -6,9 +6,10 @@ require_once 'PedeParaBanco.php';
 require_once 'GeradorToken.php';
 
 //prontas
-//triviaAPIParaBanco --falta adaptar para retornar true ou false para a pede banco
+//triviaAPIParaBanco 
 //GeradorToken
 //PedeParaBanco
+//Conexao
 
 // A classe TriviaAPIParaBanco será ajustada para usar a classe Conexao internamente
 $tokenGenerator = new GeradorToken();
@@ -32,6 +33,8 @@ echo "Resposta Correta: " . $buscaPergunta->pegaRespostaCorreta() . "\n";
 echo "Respostas Erradas: " . implode(", ", $buscaPergunta->pegaRespostasErradas()) . "\n"; // Use implode para juntar as respostas erradas, se elas forem um array
 echo "Tipo: " . $buscaPergunta->pegaTipo() . "\n";*/
 
-// botao retornar numero de 1 a 4 para testar se acertou
+// pesquisar htmlspecialchars()
+
+//require_once 'Pagina.php'; primeiro testar as classes depois debug, depois add ------
 
 ?>
