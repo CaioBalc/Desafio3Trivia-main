@@ -14,6 +14,17 @@ require_once 'GeradorToken.php';
 //PedeParaBanco
 //Conexao
 
+if (!isset($_SESSION['nome_usuario'])) {
+    header('Location: PaginaNome.php');
+    exit;
+}
+
+if (isset($_SESSION['TentativasJogadas']) && $_SESSION['TentativasJogadas'] >= 5) {
+    header('Location: paginaObrigado.php');
+    exit;
+}
+
+
 // A classe TriviaAPIParaBanco será ajustada para usar a classe Conexao internamente
 $tokenGenerator = new GeradorToken();
 $sessionToken = $tokenGenerator->geraNovoToken();
@@ -38,21 +49,12 @@ $_SESSION['Dificuldade'] = $PerguntaEscolhida->pegaDificuldade();
 
 // pesquisar htmlspecialchars()
 
-require_once 'PaginaJogo.php';// primeiro testar as classes depois debug, depois add ------
-
 
 // Se o botão de "Jogar Novamente" foi pressionado, resetar as variáveis de sessão
 // Verifica se o usuário já inseriu o nome.
-if (!isset($_SESSION['nome_usuario'])) {
-    header('Location: PaginaNome.php');
-    exit;
-}
 
 // Verifica se o usuário completou o jogo.
-if (isset($_SESSION['jogos_completados']) && $_SESSION['jogos_completados'] >= 5) {
-    header('Location: paginaObrigado.php');
-    exit;
-}
+
 
 // Se o usuário já tem um nome, mas não completou 5 jogos, mostra a página do jogo.
 header('Location: paginaJogo.php');

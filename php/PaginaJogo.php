@@ -71,7 +71,8 @@ shuffle($alternativas);
                     .then(response => response.text())
                     .then(data => {
                         alert(data);
-                        location.reload();
+                       // location.reload();
+                       window.location.href = 'index.php';
                     });
                 });
             });
