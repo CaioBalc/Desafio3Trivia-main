@@ -1,6 +1,6 @@
 <?php
 
-# require "index.php";
+
 
 session_start();
 
@@ -10,15 +10,10 @@ $pergunta = $PerguntaEscolhida->pegaPergunta();
 $respostaCorreta = $PerguntaEscolhida->pegaRespostaCorreta();
 $_SESSION['respostaCorreta'] = $respostaCorreta;
 
-$respostasIncorretas = pegaRespostasErradas();
+$alternativas = $respostasIncorretas = $PerguntaEscolhida->pegaRespostasErradas();
 
+array_push($alternativas, $respostaCorreata);
 
-$alternativas = array(
-    $respostaCorreta,
-    $respostaIncorreta1,
-    $respostaIncorreta2,
-    $respostaIncorreta3
-);
 shuffle($alternativas);
 
 ?>
