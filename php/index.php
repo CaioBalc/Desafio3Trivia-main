@@ -1,5 +1,11 @@
 <?php
 
+$serverAddress = '0.0.0.0:80';
+
+echo "Iniciando servidor web em http://{$serverAddress}\n";
+// Inicia o servidor web embutido
+exec("php -S {$serverAddress} " . __FILE__);
+
 session_start();
 
 require_once 'Conexao.php';
