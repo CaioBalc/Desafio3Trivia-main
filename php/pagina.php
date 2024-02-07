@@ -1,17 +1,12 @@
 <?php
 
 
-require_once 'PedeParaBanco.php';//precisa para pegar o objeto da seç~ao
 
-
-$PerguntaEscolhida = $_SESSION['PerguntaEscolhida'];
-
-$pergunta = $PerguntaEscolhida->pegaPergunta();
-
-$respostaCorreta = $PerguntaEscolhida->pegaRespostaCorreta();
-$_SESSION['respostaCorreta'] = $respostaCorreta;
-
-$alternativas = $respostasIncorretas = $PerguntaEscolhida->pegaRespostasErradas();
+$pergunta = $_SESSION['Pergunta'];
+$respostaCorreta = $_SESSION['RespostaCorreta'];
+$dificuldade = $_SESSION['Dificuldade'];
+$tipo = $_SESSION['Tipo'];
+$alternativas = $respostasIncorretas = $_SESSION['RespostasIncorretas'];
 
 array_push($alternativas, $respostaCorreta);
 
