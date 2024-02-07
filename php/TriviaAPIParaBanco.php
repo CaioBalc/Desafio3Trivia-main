@@ -18,38 +18,50 @@ class TriviaAPIParaBanco {
 
     public function fetchAndSaveQuestion() 
     {
-        $uri = "?amount=1";
-        $ch = curl_init();
-       
-        curl_setopt($ch, CURLOPT_URL, "https://opentdb.com/api.php" . $uri . "&token=" . $this->Token);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($ch);
-        if (curl_errno($ch)) 
-        {
-            curl_close($ch);
-            exit('Erro ao buscar dados da API: ' . curl_error($ch));
-        }
-        curl_close($ch);
-        $data = json_decode($response, true);
+        $tentativas = 0;
+        do{
+            $tentativas++;
+            $uri = "?amount=1";
+            $ch = curl_init();
+        
+            curl_setopt($ch, CURLOPT_URL, "https://opentdb.com/api.php" . $uri . "&token=" . $this->Token);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($ch);
 
-        // Imprimindo a resposta da API no terminal
-        echo "Resposta da API: \n";
-        print_r($data);
-
-        if ($data && $data['response_code'] == 0) 
-        {
-            foreach ($data['results'] as $result) {
-                $this->saveQuestion($result);
+            if (curl_errno($ch)) 
+            {
+                curl_close($ch);
+                echo'Erro ao buscar dados da API: ' . curl_error($ch) . "\n";//testar
+                return false;//falha 1 --------------------
+                
             }
-        } else {
-            exit('Resposta da API inválida ou sem dados.');///---------------------- espera e tenta de novo pq api s'o deixa uma a cada 5 seg
-            sleep(5);
-            $this->fetchAndSaveQuestion();
+            curl_close($ch);
+            $data = json_decode($response, true);
 
-        }
+            // Imprimindo a resposta da API no terminal
+            echo "Resposta da API: \n";
+            print_r($data);
+
+            if ($data && $data['response_code'] == 0) 
+            {
+                foreach ($data['results'] as $result) {
+                    $this->saveQuestion($result);
+                    return true; //sucesso-------------------------------
+                }
+            } else {
+
+                $codigo = $data['response_code'];
+                echo "Resposta da API inválida (Código de Resposta: {$codigo}). Tentando novamente em 5 segundos...\n";
+                sleep(5);
+
+            }
+        } while ($tentativas < 3);
+
+        echo "\nExcedeu o limite de tentativas. Mudando para modo offline.\n";
+        return false;// falha 2 ------------
     }
 
-    private function saveQuestion($questionData) {
+    private function saveQuestion($questionData) {//função usada dentro da de cima para pegar os dados do json e salvar no formato certo na tabela
         $sql = "INSERT INTO perguntas (tipo, categoria, dificuldade, pergunta, respostaCorreta, respostasIncorretas) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             $stmt = $this->dbConnection->prepare($sql);
