@@ -3,11 +3,13 @@
 # require "index.php";
 
 session_start();
-$_SESSION['respostaCorreta'] = $respostaCorreta;
+
 
 $pergunta = "Pergunta";
 
 $respostaCorreta = "Resposta correta";
+$_SESSION['respostaCorreta'] = $respostaCorreta;
+
 $respostaIncorreta1 = "Errado";
 $respostaIncorreta2 = "Errado";
 $respostaIncorreta3 = "Errado";

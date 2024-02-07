@@ -15,11 +15,11 @@ $tokenGenerator = new GeradorToken();
 $sessionToken = $tokenGenerator->geraNovoToken();
 
 $triviaAPIParaBanco = new TriviaAPIParaBanco($sessionToken);
-$triviaAPIParaBanco->fetchAndSaveQuestion();
+$online =$triviaAPIParaBanco->fetchAndSaveQuestion();
 
 
 // Utiliza false para pergunta aleatória ou true para a última pergunta
-$PerguntaEscolhida = new PedeParaBanco(false); // Passando false para exemplo de pergunta aleatória se tiver offline
+$PerguntaEscolhida = new PedeParaBanco($online); // Passando false para exemplo de pergunta aleatória se tiver offline
 $pergunta = $PerguntaEscolhida->pegaPergunta();
 
 print_r($pergunta);
