@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once 'Conexao.php';
 require_once 'TriviaAPIParaBanco.php';
 require_once 'PedeParaBanco.php';
