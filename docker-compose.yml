@@ -7,7 +7,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./php:/var/www/html/projeto
+      - ./php:/var/www/html
   db:
     image: postgres:latest
     environment:
