@@ -2,6 +2,9 @@
 
 # require "index.php";
 
+session_start();
+$_SESSION['respostaCorreta'] = $respostaCorreta;
+
 $pergunta = "Pergunta";
 
 $respostaCorreta = "Resposta correta";
@@ -51,23 +54,22 @@ shuffle($alternativas);
         ?>
 
         <script>
-        document.querySelectorAll('.button').forEach(button => {
-            button.addEventListener('click', event => {
-                const id = event.target.id;
-                fetch('resposta.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `resposta=${encodeURIComponent(id)}`,
-                })
-                .then(response => response.text())
-                .then(data => {
-                    alert(data);
-                    location.reload();
+            document.querySelectorAll('.button').forEach(button => {
+                button.addEventListener('click', event => {
+                    fetch('resposta.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `resposta=${encodeURIComponent(event.target.textContent)}`,
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        alert(data);
+                        location.reload();
+                    });
                 });
             });
-        });
         </script>
 
     </section>
