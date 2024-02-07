@@ -23,6 +23,8 @@ $online =$triviaAPIParaBanco->fetchAndSaveQuestion();
 $PerguntaEscolhida = new PedeParaBanco($online); // Passando false para exemplo de pergunta aleatória se tiver offline
 $pergunta = $PerguntaEscolhida->pegaPergunta();
 
+$_SESSION['PerguntaEscolhida'] = $PerguntaEscolhida;
+
 print_r($pergunta);
 
 echo"\n\n";

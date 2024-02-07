@@ -1,7 +1,7 @@
 <?php
+require_once 'PedeParaBanco.php';//precisa para pegar o objeto da seç~ao
 
-
-
+$PerguntaEscolhida = $_SESSION['PerguntaEscolhida'];
 session_start();
 
 
