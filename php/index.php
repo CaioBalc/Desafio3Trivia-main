@@ -35,6 +35,6 @@ echo "Tipo: " . $buscaPergunta->pegaTipo() . "\n";*/
 
 // pesquisar htmlspecialchars()
 
-//require_once 'Pagina.php'; primeiro testar as classes depois debug, depois add ------
+require_once 'Pagina.php';// primeiro testar as classes depois debug, depois add ------
 
 ?>
