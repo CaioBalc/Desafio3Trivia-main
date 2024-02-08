@@ -20,7 +20,7 @@ if (!isset($_SESSION['nome_usuario'])) {
 }
 
 if (isset($_SESSION['TentativasJogadas']) && $_SESSION['TentativasJogadas'] >= 5) {
-    header('Location: paginaObrigado.php');
+    header('Location: PaginaObrigado.php');
     exit;
 }
 
