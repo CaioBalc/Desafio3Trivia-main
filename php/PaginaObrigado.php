@@ -1,6 +1,8 @@
 <?php
 session_start();
 // Se o botão de "Jogar Novamente" foi pressionado, reseta as variáveis de sessão
+$_SESSION['Pontuacao'] = 0;
+
 if (isset($_POST['jogar_novamente'])) {
     // Resetar as variáveis de sessão necessárias
     unset($_SESSION['nome_usuario']);
