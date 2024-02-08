@@ -58,7 +58,7 @@ $_SESSION['PerguntaId'] = $PerguntaEscolhida->pegaPerguntaId();
 
 
 // Se o usuário já tem um nome, mas não completou 5 jogos, mostra a página do jogo.
-header('Location: paginaJogo.php');
+header('Location: PaginaJogo.php');
 exit;
 
 ?>
