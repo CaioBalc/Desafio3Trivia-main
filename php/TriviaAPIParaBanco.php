@@ -31,7 +31,7 @@ class TriviaAPIParaBanco {
 
             if (curl_errno($ch)) 
             {
-                echo'Erro ao buscar dados da API: ' . curl_error($ch) . "\n";//testar
+                //echo'Erro ao buscar dados da API: ' . curl_error($ch) . "\n";//testar
                 curl_close($ch);
                 
                 return false;//falha 1 --------------------
