@@ -61,7 +61,7 @@ shuffle($alternativas);
         <script>
             document.querySelectorAll('.button').forEach(button => {
                 button.addEventListener('click', event => {
-                    fetch('Resposta.php', {
+                    fetch('SalvaRespostaBanco.php', { //solicitaçao post pro arquivo
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',

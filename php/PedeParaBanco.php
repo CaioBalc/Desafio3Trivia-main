@@ -45,4 +45,8 @@ class PedeParaBanco {
     public function pegaTipo() {
         return $this->perguntaAtual['tipo'] ?? null;
     }
+
+    public function pegaPerguntaId() {
+        return $this->perguntaAtual['idpergunta'] ?? null;
+    }
 }

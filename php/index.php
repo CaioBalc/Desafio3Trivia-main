@@ -42,6 +42,7 @@ $_SESSION['RespostaCorreta'] = $PerguntaEscolhida->pegaRespostaCorreta();
 $_SESSION['RespostasIncorretas'] = $PerguntaEscolhida->pegaRespostasErradas();
 $_SESSION['Tipo'] = $PerguntaEscolhida->pegaTipo();
 $_SESSION['Dificuldade'] = $PerguntaEscolhida->pegaDificuldade();
+$_SESSION['PerguntaId'] = $PerguntaEscolhida->pegaPerguntaId();
 
 //print_r($pergunta);
 
