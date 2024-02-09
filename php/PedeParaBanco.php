@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Conexao.php'; // Certifique-se de que o caminho esteja correto
+require_once 'Conexao.php'; 
 
 class PedeParaBanco {
     private $pdo;
@@ -8,7 +8,7 @@ class PedeParaBanco {
     private $perguntaAtual;
 
     public function __construct($usarUltimaPergunta = true) {
-        $this->pdo = Conexao::conectar(); // Utiliza a classe Conexao para obter a conexão
+        $this->pdo = Conexao::conectar(); 
         $this->usarUltimaPergunta = $usarUltimaPergunta;
         $this->selecionaPergunta();
     }
@@ -37,8 +37,7 @@ class PedeParaBanco {
     }
 
     public function pegaRespostasErradas() {
-        // Se as respostas erradas forem armazenadas como uma string, você pode querer convertê-las em um array
-        // Supondo que as respostas erradas são separadas por vírgula
+        
         return isset($this->perguntaAtual['respostasincorretas']) ? explode(', ', $this->perguntaAtual['respostasincorretas']) : null;
     }
 

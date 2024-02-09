@@ -1,9 +1,6 @@
 <?php
 
-//funcionando com pdo ok eu acho 
-//pega uma pergunta da api e salva no banco de dados 
 
-//falta: se codigo de erro5 esperar 5 segundos e tentar de novo
 
 require_once 'Conexao.php'; 
 
@@ -14,7 +11,7 @@ class TriviaAPIParaBanco {
 
     public function __construct($sessionToken) {
         $this->Token = $sessionToken;
-        $this->dbConnection = Conexao::conectar(); // Utiliza a conexão única fornecida pela classe Conexao
+        $this->dbConnection = Conexao::conectar(); 
     }
 
     public function fetchAndSaveQuestion() 
@@ -34,13 +31,13 @@ class TriviaAPIParaBanco {
                 //echo'Erro ao buscar dados da API: ' . curl_error($ch) . "\n";//testar
                 curl_close($ch);
                 
-                return false;//falha 1 --------------------
+                return false;
                 
             }
             curl_close($ch);
             $data = json_decode($response, true);
 
-            // Imprimindo a resposta da API no terminal
+            
             if($this->debug == true)
             {
                 echo "Resposta da API: \n";
@@ -69,10 +66,10 @@ class TriviaAPIParaBanco {
             echo "Excedeu o limite de tentativas. Mudando para modo offline.\n";
         }
        
-        return false;// falha 2 ------------
+        return false;
     }
 
-    private function saveQuestion($questionData) {//função usada dentro da de cima para pegar os dados do json e salvar no formato certo na tabela
+    private function saveQuestion($questionData) {
         $sql = "INSERT INTO perguntas (tipo, categoria, dificuldade, pergunta, respostaCorreta, respostasIncorretas) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             $stmt = $this->dbConnection->prepare($sql);

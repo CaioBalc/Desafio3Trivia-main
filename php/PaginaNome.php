@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-// Verifica se o formulário foi submetido
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome_usuario']) && !empty(trim($_POST['nome_usuario']))) {
-    // Armazena o nome do usuário na sessão
+    
     
     $_SESSION['nome_usuario'] = trim($_POST['nome_usuario']);
 
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome_usuario']) && !em
     }$_SESSION['idJogo']++;
     
     
-    // Redireciona o usuário para o index.php para continuar o fluxo
+    
     header('Location: index.php');
     exit;
 }

@@ -51,17 +51,17 @@ shuffle($alternativas);
         ?>
         <h2 class="centralizar"><b>Alternativas: </b></h2>
         <?php
-            #$alternativas = ["String", "Talvez não"];
+            
             foreach ($alternativas as $chave => $valor){
             echo "<button class='button' id='$chave'>$valor</button>";
-            # print_r($valor);
+           
             }
         ?>
 
         <script>
             document.querySelectorAll('.button').forEach(button => {
                 button.addEventListener('click', event => {
-                    fetch('SalvaRespostaBanco.php', { //solicitaçao post pro arquivo
+                    fetch('SalvaRespostaBanco.php', { 
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
@@ -71,7 +71,7 @@ shuffle($alternativas);
                     .then(response => response.text())
                     .then(data => {
                         alert(data);
-                       // location.reload();
+                      
                        window.location.href = 'index.php';
                     });
                 });

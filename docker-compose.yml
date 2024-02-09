@@ -20,4 +20,3 @@ services:
       - ./dados:/var/lib/postgresql/data
       - ./postgresql/setup.sql:/docker-entrypoint-initdb.d/setup.sql
     
-#docker compose up -d  docker compose stop e docker compose down

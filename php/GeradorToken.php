@@ -12,12 +12,11 @@ class GeradorToken {
 
         
 
-        // Verifica se a chamada foi bem-sucedida e se há um token na resposta
+       
         if (!empty($data) && $data['response_code'] == 0 && isset($data['token'])) {
-            // Retorna apenas o token sem imprimir nada
+            
             return $data['token'];
         } else {
-            // Retorna um código de erro específico ou genérico se a resposta não for bem-sucedida
             //$errorCode = isset($data['response_code']) ? $data['response_code'] : 'Erro desconhecido';
             //echo "Código de erro: $errorCode\n";
             return null;
@@ -25,9 +24,6 @@ class GeradorToken {
     }
 }
 
-/* Uso
-$tokenGenerator = new TriviaSessionTokenGenerator();
-$sessionToken = $tokenGenerator->geraNovoToken();*/
 
 
 

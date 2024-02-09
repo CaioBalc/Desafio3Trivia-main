@@ -24,12 +24,12 @@ if (isset($_POST['Resposta']))
     $_SESSION['TentativasJogadas']++;
 
     $nomeJogador = $_SESSION['nome_usuario'];
-    $perguntaId = $_SESSION['PerguntaId']; // Garanta que isso está sendo definido corretamente em outra parte do seu código
+    $perguntaId = $_SESSION['PerguntaId']; 
     $idJogo = $_SESSION['idJogo'];
     $idJogador = $_SESSION['idJogador'];
-    $acertoFormatado = $acerto ? 'true' : 'false'; //talvez resolve
+    $acertoFormatado = $acerto ? 'true' : 'false'; 
 
-    // Preparando a query SQL para inserir a jogada
+   
     $sql = "INSERT INTO jogadas (idJogo, idJogador, nomeJogador, acerto, idPergunta) VALUES (?, ?, ?, ?, ?)";
 
     try {
@@ -44,7 +44,7 @@ if (isset($_POST['Resposta']))
 
         
     } catch (PDOException $e) {
-        // Tratamento do erro
+        
         exit('Erro ao salvar jogada no banco de dados: ' . $e->getMessage());
     }
 }
